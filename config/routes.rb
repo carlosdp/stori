@@ -1,4 +1,13 @@
 Stori::Application.routes.draw do
+  resources :sentences
+
+
+  resources :stories
+
+
+  resources :authors
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

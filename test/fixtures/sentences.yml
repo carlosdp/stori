@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  story_id: 1
+  author_id: 1
+  content: MyString
+  length: 1
+
+two:
+  story_id: 1
+  author_id: 1
+  content: MyString
+  length: 1
