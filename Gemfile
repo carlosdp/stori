@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'bourbon'
 gem 'neat'
 gem 'simple_form'
+gem 'bcrypt-ruby'
 
 group :test do
   gem 'rspec-rails'

@@ -11,8 +11,10 @@
     <%= link_to 'Story', root_path, class: 'brand' %>
 
     <ul class="nav-links">
+      <li><%= link_to 'Stories', stories_path %></li>
     </ul>
 
+    <%= link_to 'Create a Story', new_story_path, class: 'story-button' %>
     <%= link_to 'Sign Up', signup_path, class: 'signup' %>
   </div>
 

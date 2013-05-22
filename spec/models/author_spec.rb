@@ -11,6 +11,10 @@ describe Author do
   it { should allow_value("555-555-5555").for(:phone) }
   it { should_not allow_value("5").for(:phone) }
   it { should_not allow_value("4569709897086754563678978674577").for(:phone) }
+  it { should allow_value("test@example.com").for(:email) }
+  it { should allow_value("test3@example.com").for(:email) }
+  it { should_not allow_value("testexample.com").for(:email) }
+  it { should_not allow_value(nil).for(:email) }
 
   it "returns full name" do
     author = FactoryGirl.build(:author, first_name: 'Bob', last_name: 'Loblaw')

@@ -11,6 +11,8 @@ Feature: Manage Authors
     When I fill in "First Name" with "Bob"
     And I fill in "Last Name" with "Loblaw"
     And I fill in "Phone" with "555-555-5555"
+    And I fill in "Password" with "mypassword"
+    And I fill in "Password Confirmation" with "mypassword"
     And I press "Sign me up!"
     Then I should see "Bob Loblaw"
     And I should see "(555) 555-5555"

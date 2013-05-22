@@ -2,11 +2,9 @@
 
 <table>
   <tr>
-    <th>Author</th>
     <th>Title</th>
+    <th>Author</th>
     <th>Publish date</th>
-    <th>Complete date</th>
-    <th>Active</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +12,9 @@
 
 <% @stories.each do |story| %>
   <tr>
-    <td><%= story.author_id %></td>
-    <td><%= story.title %></td>
+    <td><%= link_to story.title, story %></td>
+    <td><%= link_to story.author.name, story.author %></td>
     <td><%= story.publish_date %></td>
-    <td><%= story.complete_date %></td>
-    <td><%= story.active %></td>
     <td><%= link_to 'Show', story %></td>
     <td><%= link_to 'Edit', edit_story_path(story) %></td>
     <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>

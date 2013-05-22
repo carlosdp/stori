@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Author:</b>
-  <%= @story.author_id %>
+  <b>Main Author:</b>
+  <%= link_to @story.author.name, @story.author %>
 </p>
 
 <p>
@@ -20,11 +20,13 @@
   <%= @story.complete_date %>
 </p>
 
-<p>
-  <b>Active:</b>
-  <%= @story.active %>
-</p>
-
+<h2>Authors</h2>
+<table class="sub-table">
+  <% if @story.sentences.count > 0 %>
+  <% else %>
+    Nothing Written Yet
+  <% end %>
+</table>
 
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

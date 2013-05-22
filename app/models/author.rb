@@ -1,11 +1,14 @@
 class Author < ActiveRecord::Base
-  attr_accessible :active, :first_name, :last_name, :phone
+  has_secure_password
+
+  attr_accessible :active, :first_name, :last_name, :phone, :password, :password_confirmation
 
   has_many :stories
   has_many :sentences
 
   validates_presence_of :first_name, :last_name
   validates_format_of :phone, with: /^\(?\d{3}\)?[ .-]?\d{3}[ .-]?\d{4}$/
+  validates_format_of :email, with: /^\S+@\S+\.\w+$/
 
   before_save :format_phone
 
