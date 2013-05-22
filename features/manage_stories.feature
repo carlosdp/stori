@@ -15,6 +15,7 @@ Feature: Manage Stories
     And I should see "Luke"
 
   Scenario: Create new story
+    Given I am logged in as an author
     Given I am on the home page
     When I follow "Create a Story"
     Then I should be on the new_story page

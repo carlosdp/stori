@@ -1,7 +1,7 @@
 class Author < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :active, :first_name, :last_name, :phone, :password, :password_confirmation
+  attr_accessible :active, :first_name, :last_name, :email, :phone, :password, :password_confirmation
 
   has_many :stories
   has_many :sentences

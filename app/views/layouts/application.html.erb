@@ -16,7 +16,24 @@
 
     <%= link_to 'Create a Story', new_story_path, class: 'story-button' %>
     <%= link_to 'Sign Up', signup_path, class: 'signup' %>
+    <% unless current_author %>
+      <%= link_to 'Login', login_path, class: 'login' %>
+    <% else %>
+      <%= link_to 'Logout', logout_path, class: 'logout' %>
+    <% end %>
   </div>
+
+  <% if flash[:notice] %>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:error] %>
+    <div class="error">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
 
 <%= yield %>
 

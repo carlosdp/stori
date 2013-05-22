@@ -9,7 +9,7 @@ Stori::Application.routes.draw do
 
   get 'signup' => 'authors#new'
 
-  root to: 'sentences#index'
+  root to: 'stories#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -10,6 +10,7 @@ Feature: Manage Authors
     And I should see "Author Sign Up"
     When I fill in "First Name" with "Bob"
     And I fill in "Last Name" with "Loblaw"
+    And I fill in "Email" with "test@example.com"
     And I fill in "Phone" with "555-555-5555"
     And I fill in "Password" with "mypassword"
     And I fill in "Password Confirmation" with "mypassword"

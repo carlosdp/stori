@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  skip_before_filter :require_author, only: [:index, :show, :new, :create]
   # GET /authors
   # GET /authors.json
   def index
