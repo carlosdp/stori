@@ -3,6 +3,8 @@ Stori::Application.routes.draw do
   resources :stories
   resources :authors
 
+  get 'signup' => 'authors#new'
+
   root to: 'sentences#index'
 
   # The priority is based upon order of creation:

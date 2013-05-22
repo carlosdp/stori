@@ -16,6 +16,7 @@ group :test do
   gem 'shoulda'
   gem 'cucumber-rails', require: false
   gem 'cucumber-websteps'
+  gem 'database_cleaner'
 end
 
 

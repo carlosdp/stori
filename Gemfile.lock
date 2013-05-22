@@ -61,6 +61,7 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.1)
       launchy
+    database_cleaner (1.0.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -167,6 +168,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails
   cucumber-websteps
+  database_cleaner
   factory_girl_rails
   jquery-rails
   neat

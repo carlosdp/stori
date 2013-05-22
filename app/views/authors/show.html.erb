@@ -1,24 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>First name:</b>
-  <%= @author.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @author.last_name %>
+  <b>Name:</b>
+  <%= @author.name %>
 </p>
 
 <p>
   <b>Phone:</b>
-  <%= @author.phone %>
+  <%= format_phone(@author.phone) %>
 </p>
 
-<p>
-  <b>Active:</b>
-  <%= @author.active %>
-</p>
+<h2>Stories</h2>
+<table class="sub-table">
+  <% if @author.stories.count > 0 %>
+  <% else %>
+    No stories yet
+  <% end %>
+</table>
 
 
 <%= link_to 'Edit', edit_author_path(@author) %> |

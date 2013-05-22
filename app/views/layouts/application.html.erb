@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="nav">
+    <%= link_to 'Story', root_path, class: 'brand' %>
+
+    <ul class="nav-links">
+    </ul>
+
+    <%= link_to 'Sign Up', signup_path, class: 'signup' %>
+  </div>
 
 <%= yield %>
 
