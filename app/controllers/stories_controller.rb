@@ -91,9 +91,9 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
 
     response = Twilio::TwiML::Response.new do |r|
-      r.Say "We are composing a story entitled #{@story.title}"
-      r.Say "You will hear the current story and then have a chance to add to it"
-      r.Say "After the last sentence and the beep, you will have 5 seconds to say a sentence to add to the story"
+      r.Say "We are composing a story entitled #{@story.title}", voice: 'woman'
+      r.Say "You will hear the current story and then have a chance to add to it", voice: 'woman'
+      r.Say "After the last sentence and the beep, you will have 5 seconds to say a sentence to add to the story", voice: 'woman'
       r.Record action: full_path(record_story_path(@story, number: params[:number])), timeout: 5, playBeep: true, maxLength: 5
       r.Say "I am sorry, I didn't hear anything"
     end
@@ -116,6 +116,13 @@ class StoriesController < ApplicationController
     else
       CallChain.new.send_finished_message(@story.author.phone, @story.title, full_path(story_path(@story)))
     end
+
+    response = Twilio::TwiML::Response.new do |r|
+      r.Say "Thank you for your contribution!", voice: 'woman'
+      r.Hangup
+    end
+
+    render xml: response.text
   end
 
   # PUT /stories/1
