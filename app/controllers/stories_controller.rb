@@ -114,7 +114,7 @@ class StoriesController < ApplicationController
       number = @story.unwritten_authors.first.phone
       CallChain.new.grab_sentence(number, full_path(continue_composing_story_path(@story)))
     else
-      CallChain.send_finished_message(@story.author.phone, @story.title, full_path(story_path(@story)))
+      CallChain.new.send_finished_message(@story.author.phone, @story.title, full_path(story_path(@story)))
     end
   end
 
