@@ -20,6 +20,14 @@
   <%= @story.complete_date %>
 </p>
 
+<%= link_to 'Compose', compose_story_path(@story) %>
+
+<% unless @story.includes_author?(current_author) %>
+  <%= link_to 'Join Story', join_story_path(@story) %>
+<% else %>
+  <%= link_to 'Leave Story', leave_story_path(@story) %>
+<% end %>
+
 <h2>Authors</h2>
 <table class="sub-table">
   <% if @story.sentences.count > 0 %>

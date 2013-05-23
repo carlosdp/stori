@@ -1,8 +1,9 @@
 class SentencesController < ApplicationController
+  before_filter :get_story, only: [:index, :new, :create]
   # GET /sentences
   # GET /sentences.json
   def index
-    @sentences = Sentence.all
+    @sentences = @story.sentences
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +41,8 @@ class SentencesController < ApplicationController
   # POST /sentences
   # POST /sentences.json
   def create
-    @sentence = Sentence.new(params[:sentence])
+    @sentence = @story.sentences.new(params[:sentence])
+    @sentence.author = current_author
 
     respond_to do |format|
       if @sentence.save
@@ -79,5 +81,11 @@ class SentencesController < ApplicationController
       format.html { redirect_to sentences_url }
       format.json { head :no_content }
     end
+  end
+
+  protected
+
+  def get_story
+    @story = Story.find(params[:story_id])
   end
 end

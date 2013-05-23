@@ -22,6 +22,26 @@ class StoriesController < ApplicationController
     end
   end
 
+  def join
+    @story = Story.find(params[:id])
+
+    @story.sentences.create(author_id: current_author.id)
+
+    flash[:notice] = "Joined Story"
+
+    redirect_to @story
+  end
+
+  def leave
+    @story = Story.find(params[:id])
+
+    @story.sentences.where(author_id: current_author.id).each {|s| s.destroy}
+
+    flash[:notice] = "Left Story"
+
+    redirect_to @story
+  end
+
   # GET /stories/new
   # GET /stories/new.json
   def new
@@ -51,6 +71,45 @@ class StoriesController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def compose
+    @story = Story.find(params[:id])
+
+    number = @story.unwritten_authors.first.phone
+
+    CallChain.new.grab_sentence(number, full_path(continue_composing_story_path(@story)))
+  end
+
+  def continue_composing
+    @story = Story.find(params[:id])
+
+    response = Twilio::TwiML::Response.new do |r|
+      r.Say "We are composing a story entitled #{@story.title}"
+      r.Say "You will hear the current story and then have a chance to add to it"
+      r.Say "After the last sentence and the beep, you will have 5 seconds to say a sentence to add to the story"
+      r.Record url: full_path(record_story_path(@story), number: params[:number]), timeout: 5, playBeep: true, maxLength: 5
+      r.Say "Thank You, you will receive a message once the story publishes"
+    end
+
+    render xml: response.text
+  end
+
+  def record
+    @story = Story.find(params[:id])
+
+    @author = Author.find_by_phone(params[:number])
+
+    if @author
+      @story.sentences.where(author_id: @author.id).first.update_attributes(content: 'N/A', record_path: params[:RecordingUrl])
+    end
+
+    if @story.unwritten_authors.count > 0
+      number = @story.unwritten_authors.first.phone
+      CallChain.new.grab_sentence(number, full_path(continue_composing_story_path(@story)))
+    else
+      CallChain.send_finished_message(@story.author.phone, @story.title, full_path(story_path(@story))
     end
   end
 

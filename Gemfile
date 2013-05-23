@@ -5,11 +5,15 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'bourbon'
 gem 'neat'
 gem 'simple_form'
 gem 'bcrypt-ruby'
+gem 'twilio-ruby'
+
+group :development do
+  gem 'sqlite3'
+end
 
 group :test do
   gem 'rspec-rails'
@@ -18,6 +22,10 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-websteps'
   gem 'database_cleaner'
+end
+
+group :production do
+  gem 'pg'
 end
 
 
