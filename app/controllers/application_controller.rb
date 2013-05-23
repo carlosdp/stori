@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def full_path(path)
     if Rails.env.production?
-      'na'
+      'http://guarded-fjord-4951.herokuapp.com'
     else
       'http://localhost:3000' + path
     end
