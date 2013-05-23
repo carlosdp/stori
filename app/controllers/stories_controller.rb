@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  skip_before_filter :require_author, only: [:index, :show]
+  skip_before_filter :require_author, only: [:index, :show, :continue_composing, :record]
   # GET /stories
   # GET /stories.json
   def index
