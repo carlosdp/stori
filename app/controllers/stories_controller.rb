@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   skip_before_filter :require_author, only: [:index, :show, :continue_composing, :record]
+  skip_before_filter :verify_authenticity_token, only: [:continue_composing, :record]
   # GET /stories
   # GET /stories.json
   def index
@@ -80,6 +81,10 @@ class StoriesController < ApplicationController
     number = @story.unwritten_authors.first.phone
 
     CallChain.new.grab_sentence(number, full_path(continue_composing_story_path(@story)))
+
+    flash[:notice] = "Composing Story!"
+
+    redirect_to @story
   end
 
   def continue_composing
