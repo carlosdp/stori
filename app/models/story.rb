@@ -11,6 +11,6 @@ class Story < ActiveRecord::Base
   end
 
   def unwritten_authors
-    Author.where(id: self.sentences.where(content: nil).pluck(:author_id))
+    Author.where(id: self.sentences.incomplete.pluck(:author_id))
   end
 end

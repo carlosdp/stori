@@ -110,7 +110,7 @@ class StoriesController < ApplicationController
     @author = Author.find_by_phone(params[:number])
 
     if @author
-      @story.sentences.where(author_id: @author.id).first.update_attributes(content: 'N/A', record_path: params[:RecordingUrl])
+      @story.sentences.incomplete.where(author_id: @author.id).first.update_attributes(content: 'N/A', record_path: params[:RecordingUrl])
     end
 
     if @story.unwritten_authors.count > 0
