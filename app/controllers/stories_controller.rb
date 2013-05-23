@@ -43,6 +43,19 @@ class StoriesController < ApplicationController
     redirect_to @story
   end
 
+  def publish
+    @story = Story.find(params[:id])
+
+    record_paths = @story.sentences.complete.pluck(:record_path)
+    soundcloud_url = SoundCloudClient.new.combine_and_upload_recordings(@story.title, @story.author.name, record_paths)
+
+    @story.update_attributes(publish_date: Date.today, soundcloud_url: soundcloud_url)
+    
+    flash[:notice] = "Story Published!"
+
+    redirect_to @story
+  end
+
   # GET /stories/new
   # GET /stories/new.json
   def new

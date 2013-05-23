@@ -10,6 +10,7 @@ gem 'neat'
 gem 'simple_form'
 gem 'bcrypt-ruby'
 gem 'twilio-ruby'
+gem 'soundcloud'
 
 group :development do
   gem 'sqlite3'

@@ -6,6 +6,7 @@ Stori::Application.routes.draw do
     match 'record', on: :member, as: 'record'
     get 'join', on: :member, as: 'join'
     get 'leave', on: :member, as: 'leave'
+    get 'publish', on: :member, as: 'publish'
   end
   resources :sentences, except: [:index, :new, :create]
   resources :authors

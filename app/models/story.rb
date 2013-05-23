@@ -1,5 +1,5 @@
 class Story < ActiveRecord::Base
-  attr_accessible :active, :author_id, :complete_date, :publish_date, :title
+  attr_accessible :active, :author_id, :complete_date, :publish_date, :title, :soundcloud_url
 
   belongs_to :author
   has_many :sentences

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523080826) do
+ActiveRecord::Schema.define(:version => 20130523170356) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(:version => 20130523080826) do
     t.integer  "author_id"
     t.string   "content"
     t.integer  "length"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "record_path"
+    t.string   "soundcloud_url"
   end
 
   create_table "stories", :force => true do |t|
@@ -40,8 +41,9 @@ ActiveRecord::Schema.define(:version => 20130523080826) do
     t.date     "publish_date"
     t.date     "complete_date"
     t.boolean  "active"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "soundcloud_url"
   end
 
 end
