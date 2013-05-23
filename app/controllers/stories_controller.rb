@@ -94,7 +94,7 @@ class StoriesController < ApplicationController
       r.Say "We are composing a story entitled #{@story.title}"
       r.Say "You will hear the current story and then have a chance to add to it"
       r.Say "After the last sentence and the beep, you will have 5 seconds to say a sentence to add to the story"
-      r.Record url: full_path(record_story_path(@story), number: params[:number]), timeout: 5, playBeep: true, maxLength: 5
+      r.Record url: full_path(record_story_path(@story, number: params[:number])), timeout: 5, playBeep: true, maxLength: 5
       r.Say "Thank You, you will receive a message once the story publishes"
     end
 
